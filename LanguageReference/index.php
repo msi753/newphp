@@ -1,0 +1,1 @@
+http://docs.php.net/manual/en/langref.php
