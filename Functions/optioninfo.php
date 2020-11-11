@@ -3,15 +3,15 @@
 /**
  * PHP Extension
  */
-//var_dump(extension_loaded('mbstring')); //true 한글/일본어/중문 등의 2바이트 문자열을 다루는 함수들은 mbstring
-//var_dump(get_loaded_extensions());
+var_dump(extension_loaded('mbstring')); //true 한글/일본어/중문 등의 2바이트 문자열을 다루는 함수들은 mbstring
+var_dump(get_loaded_extensions());
 
 
 
 /**
  * include path ??? 이상한데???
  */
-//var_dump(__DIR__);  //"D:\myeongsim\newphp\Functions
+var_dump(__DIR__);  //"D:\myeongsim\newphp\Functions
 ini_set('include_path', __DIR__, '/mylib');     //또는 set_include_path(__DIR__, '\mylib');
 include 'HelloWorld.php';
 var_dump(get_include_path());   //C:\php\pear"
@@ -22,7 +22,7 @@ var_dump(get_include_path());   //C:\php\pear"
  * get included files.
  */
 
-//var_dump(get_included_files());     //D:\myeongsim\newphp\Functions\optioninfo.php
+var_dump(get_included_files());     //D:\myeongsim\newphp\Functions\optioninfo.php
 
 
 
@@ -38,7 +38,7 @@ var_dump(get_include_path());   //C:\php\pear"
  * ini_set을 통해 설정할 수 있는 부분과 없는 부분이 있다.
  */
 ini_set('session.gc_maxlifetime', 1440);
-//echo ini_get('session.gc_maxlifetime'); //1440
+echo ini_get('session.gc_maxlifetime'); //1440
 ini_restore('session.gc_maxlifetime');
 ini_set('zend.assertions', 1);  //설정해도 값이 바뀌지 않음
 
@@ -48,10 +48,10 @@ ini_set('zend.assertions', 1);  //설정해도 값이 바뀌지 않음
  * environment variables
  */
 putenv('APP_ENV='.'production');
-//var_dump(getenv('APP_EVN'));    //production
+var_dump(getenv('APP_EVN'));    //production
 
 $_ENV['APP_ENV'] = 'development';
-//var_dump($_ENV['APP_ENV']); //development
+var_dump($_ENV['APP_ENV']); //development
 
 
 

@@ -12,9 +12,9 @@ $temp = null;   //null
 /**
  * 작은따옴표 안의 변수는 텍스트로 인식
  */
-// echo "The message is $message";     //The message is Hello, world
-// echo "The message is {$message}";   //The message is Hello, world
-// echo 'The message is {$message}';   //The message is {$message} 
+echo "The message is $message";     //The message is Hello, world
+echo "The message is {$message}";   //The message is Hello, world
+echo 'The message is {$message}';   //The message is {$message} 
 
 /**
  * Here Doc, Now Doc 잘 쓰이지 않음
