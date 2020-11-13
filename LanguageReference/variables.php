@@ -19,7 +19,8 @@ echo 'The message is {$message}';   //The message is {$message}
 /**
  * Here Doc, Now Doc 잘 쓰이지 않음
  */
-//Here Doc
+
+//Here Doc  $를 변수로 해석, \$greeting이라고 해야 now doc과 일치
 echo <<<HTML
 <html>
     <head>
@@ -27,7 +28,8 @@ echo <<<HTML
     </head>
 </html>
 HTML;
-//Now Doc 변수를 텍스트로 인식
+
+//Now Doc   $가 나와도 텍스트로 인식 -> 변수가 이스케이핑 되는 효과
 echo <<<'HTML'
 <html>
     <head>
@@ -35,6 +37,8 @@ echo <<<'HTML'
     </head>
 </html>
 HTML;
+
+
 
 /**
  * Free 메모리 해제

@@ -39,14 +39,14 @@ $message3 = [
 /**
  * Destructing 비구조화(배열 분해) php7
  */
-//list($message) = $message;  //'Hello, world'
-//[$message] = $message;
-//[0 => $message] = $message3;
+list($message) = $message;  //'Hello, world'
+[$message] = $message;
+[0 => $message] = $message3;
 
 
-//list(, $message) = $message;    //'who are you?'
-//[, $message] = $message;
-//['message', $message] = $message3;
+list(, $message) = $message;    //'who are you?'
+[, $message] = $message;
+['message', $message] = $message3;
 
 /**
  * CRUD

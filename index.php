@@ -2,15 +2,10 @@
 //주석
 #주석
 /**
- * 주석
+ * 파일 경로: D:\myeongsim\newphp
+ * php7에 추가된 내용은 파일명 마지막에 7을 붙여주자	파일명7.php
  */
-
-echo 'php7에 추가된 내용은 파일명 마지막에 7을 붙여주자';
-echo '파일명7.php';
-
-echo '파일 경로: D:\myeongsim\newphp';
-
-	phpinfo();
+//phpinfo();
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -20,6 +15,12 @@ echo '파일 경로: D:\myeongsim\newphp';
 	<title>index</title>
 </head>
 <body>
-	Hello, World!
+	<ul>
+		<a href="./Functions">함수</a>
+		<a href="./LanguageReference">기본문법</a>
+		<a href="./Security">보안</a>
+		<a href="./Board">게시판</a>
+	</ul>
+	
 </body>
 </html>
