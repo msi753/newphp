@@ -9,7 +9,7 @@ require_once dirname(__DIR__).'/layouts/top.php';
 ?>
 
 <div id="main_form-auth" class="uk-position-center">
-    <form action="/Board/user/register_process.php" method="POST">
+    <form action="/Board/auth/login_process.php" method="POST">
         <input type="text" name="email" class="uk-input" placeholder="email">
         <input type="password" name="password" class="uk-input" placeholder="password">
         <input type="submit" value="submit" class="uk-button uk-button-default uk-width-1-1 uk-margin-small-bottom">

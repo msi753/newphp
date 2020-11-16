@@ -17,7 +17,7 @@ $_SESSION['mySession'] = 'Hello, world';
 /**
  * get session id
 */
-session_id();
+session_id();   //기본은 session.name = PHPSESSID(php.ini)
 
 /**
  * get session name
@@ -33,7 +33,7 @@ session_gc();
 /**
  * get session cookie info
 */
-session_get_cookie_params(1440);
+//session_get_cookie_params(1440);
 session_get_cookie_params();
 // array (size=6)
 //   'lifetime' => int 0
@@ -74,3 +74,4 @@ session_commit();
  * 세션 연장 시에 주로 사용(보안 강화)
  */
 session_regenerate_id();
+$_SESSION['TIMESTAMP'] = time();

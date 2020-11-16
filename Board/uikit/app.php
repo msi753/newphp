@@ -16,15 +16,17 @@ ini_set('display_errors', 'Off');
 $GLOBALS['DB_CONNECTION'] = mysqli_connect(
     'localhost',    //호스트 주소
     'root',         //user
-    'root',         //password
+    '',             //password
     'phpblog'       //database
 );
 //싱글톤 패턴
-register_shutdown_function(function() {
-    if(array_key_exists('DB_CONNECTION', $GLOBALS) && $GLOBALS['DB_CONNECTION']) {
-        mysqli_close($GLOBALS['DB_CONNECTION']);
+register_shutdown_function(
+    function () { 
+        if (array_key_exists('DB_CONNECTION', $GLOBALS) && $GLOBALS['DB_CONNECTION']) {
+            mysqli_close($GLOBALS['DB_CONNECTION']);
+        }
     }
-});
+);
 
 /**
  * SESSION
