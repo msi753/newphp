@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>php-blog - <?=$_SERVER['REQUEST_URI']??'' ?></title>
+    <title>php-blog - <?=$_SERVER['REQUEST_URI']?:'' ?></title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/css/uikit.min.css" />
@@ -14,7 +14,7 @@
         <nav id="nav" role="navigation" class="uk-navbar-container" uk-navbar>
             <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav">
-                    <li><a href="/Board">Home</a></li>
+                    <li><a href="/Board/index.php">Home</a></li>
                     <li><a href="/Board/user/register.php">Register</a></li>
                     <?php if (array_key_exists('user', $_SESSION)) : ?>
                         <li><a href="/Board/user/update.php">My page</a></li>

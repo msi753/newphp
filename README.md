@@ -13,7 +13,6 @@ php -S localhost:8000 -t Functions
 네이밍 컨벤션
 https://edykim.com/ko/post/comparing-paleolithic-php-with-modern-php/
 https://www.php-fig.org/psr/psr-1/
-https://www.php-fig.org/psr/psr-2/
 
 Files MUST use only <?php and <?= tags.
 
@@ -50,4 +49,25 @@ Method names MUST be declared in camelCase.
 Code MUST use 4 spaces for indenting, not tabs.
 
 The PHP constants(keywords) true, false, and null MUST be in lower case.
+
+기초문법
+http://docs.php.net/manual/en/langref.php
+
+내장함수
+http://docs.php.net/manual/en/extensions.membership.php
+
+보안
+http://docs.php.net/manual/en/security.php
+
+예제코드
+https://github.com/pronist/php7-lecture/tree/basic
+
+UIkit
+https://getuikit.com/
+
+CKEditor 5
+https://ckeditor.com/ckeditor-5/
+
+핸드북
+https://pronist.tistory.com/36
 

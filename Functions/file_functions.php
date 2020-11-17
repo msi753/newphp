@@ -31,4 +31,7 @@ is_file($path);
 link(__FILE__, './file_functions.php');
 
 /**
- * Symlink 바�
+ * Symlink 바로가기
+ */
+symlink(__FILE__, './sym_file_functions.php');
+readlink('./sym_file_functions.php'); //-> D:\myeongsim\newphp\Functions\filesystem2.php

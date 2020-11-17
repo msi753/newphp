@@ -14,7 +14,7 @@ $user = $_SESSION['user'];
 require_once dirname(__DIR__).'/layouts/top.php';
 ?>
 
-<div id="main_form-auth" class="uk-position-center">
+<div id="main__form-auth" class="uk-position-center">
     <form action="/Board/user/update_process.php" method="POST">
         <input type="text" name="email" value="<?=$user['email'];?>" class="uk-input" placeholder="email">
         <input type="password" name="password" class="uk-input" placeholder="password">

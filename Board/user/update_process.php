@@ -2,7 +2,7 @@
 
 require_once dirname(__DIR__).'/uikit/app.php';
 
-if (!array_key_exists('user', $_SESSION)) {
+if (array_key_exists('user', $_SESSION)) {
     $user = $_SESSION['user'];
 
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL, FILTER_SANITIZE_EMAIL);
