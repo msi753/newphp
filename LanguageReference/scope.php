@@ -58,7 +58,7 @@ echo foo5();    //3
  * closure
  */
 function foo6($arg) {
-    return function() use($arg) {   //foo6에서 parameter로 들어온 값을 사용하려면 use사용
+    return function() use ($arg) {   //foo6에서 parameter로 들어온 값을 사용하려면 use사용
         return $arg;
     };
 }
