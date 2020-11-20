@@ -20,7 +20,6 @@
 		<a href="./LanguageReference">기본문법</a>
 		<a href="./Security">보안</a>
 		<a href="./Board">게시판</a>
-	</ul>
-	
+	</ul>	
 </body>
 </html>
