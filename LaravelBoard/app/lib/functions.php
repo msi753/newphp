@@ -1,5 +1,14 @@
 <?php
 
+function user()
+{
+    if (array_key_exists('user', $_SESSION)) {
+        return $_SESSION['user'];
+    }
+    return false;
+}
+
+
 /**
  * View
  *
@@ -11,7 +20,7 @@
 function view($view, $vars = [])
 {
     foreach ($vars as $name => $value) {
-        $$name = $value;
+        $$name = $value;    //가변변수
     }
     return require_once dirname(__DIR__, 2) . '/resources/views/layouts/app.php';
 }
@@ -25,7 +34,7 @@ function view($view, $vars = [])
  */
 function owner($id)
 {
-    [ 'user_id' => $userId ] = first("SELECT * FROM posts WHERE id = ?", $id);
+    [ 'user_id' => $userId ] = selectOne('posts', $id);
     if ($user = $_SESSION['user']) {
         return $userId == $user['id'];
     }
@@ -55,15 +64,16 @@ function redirect($url)
 function reject($message = null)
 {
     switch (gettype($message)) {
-        case 'integer':
-            http_response_code($message);
-            return;
+        case 'integer':            
+            return http_response_code($message);
         case 'string':
             return header("Location: {$message}");
         default:
             return header("Location: {$_SERVER['HTTP_REFERER']}");
     }
 }
+
+
 
 /**
  * match
@@ -82,43 +92,8 @@ function match($path, $method = null)
     return $is;
 }
 
-/**
- * CSRF_TOKEN
- *
- * @param array $guards
- *
- * @return bool
- */
-function verify($guards)
-{
-    foreach ($guards as [ $path, $method ]) {
-        if (match($path, $method)) {
-            $token = array_key_exists('token', $_REQUEST) ? filter_var($_REQUEST['token'], FILTER_SANITIZE_STRING) : null;
-            if (hash_equals($token, $_SESSION['CSRF_TOKEN'])) {
-                return true;
-            }
-            return false;
-        }
-    }
-    return true;
-}
 
-/**
- * Register auth guard
- *
- * @param array $guards
- *
- * @return bool
- */
-function guard($guards)
-{
-    foreach ($guards as $path) {
-        if (match($path)) {
-            return $_SESSION['user'] ?: false;
-        }
-    }
-    return true;
-}
+
 
 /**
  * Check request params
@@ -144,10 +119,10 @@ function requires($requires)
  */
 function routes($routes)
 {
-    foreach ($routes as [ $path, $method, $callbackString ]) {
-        [ $file, $callback ] = explode('.', $callbackString);
+    foreach ($routes as [ $path, $method, $callbackString ]) {        
         if (match($path, $method)) {
-            require_once dirname(__DIR__, 2) . "/app/controllers/{$file}.php";
+            [ $file, $callback ] = explode('.', $callbackString);
+            require_once dirname(__DIR__, 2)."/app/controllers/{$file}.php";
             call_user_func($callback, ...array_values($_GET));
             return true;
         }
@@ -180,9 +155,17 @@ function session($path, $lifetime)
     return session_start();
 }
 
+
+
+function selectOne($table, $id) 
+{
+    return first("SELECT * FROM {$table} WHERE id=?", $id);
+}
+
+
 function transform($posts) 
 {
-    array_map(function ($post) {
+    return array_map(function ($post) {
         ['username' => $username] = selectOne('users', $post['user_id']);
         $content = filter_var(
             mb_substr(strip_tags($post['content']), 0, 200),
@@ -190,8 +173,48 @@ function transform($posts)
         );
         $mappings = array_merge(compact('username', 'content'), [
             'created_at' => date('h:i A, M j', strtotime($post['created_at'])),
-            'url'        => "/post/read.php?id".$post['id']
+            'url'        => "/post/read?id=".$post['id']
         ]);
         return array_merge($post, $mappings);
     }, $posts);
+}
+
+
+/**
+ * CSRF_TOKEN
+ *
+ * @param array $guards
+ *
+ * @return bool
+ */
+function verify($guards)
+{
+    foreach ($guards as [ $path, $method ]) {
+        if (match($path, $method)) {
+            $token = array_key_exists('token', $_REQUEST) ? filter_var($_REQUEST['token'], FILTER_SANITIZE_STRING) : null;
+            if (hash_equals($token, $_SESSION['CSRF_TOKEN'])) {
+                return true;
+            }
+            return false;
+        }
+    }
+    return true;
+}
+
+
+/**
+ * Register auth guard
+ *
+ * @param array $guards
+ *
+ * @return bool
+ */
+function guard($guards)
+{
+    foreach ($guards as $path) {
+        if (match($path)) {
+            return user() ?: false;
+        }
+    }
+    return true;
 }

@@ -71,3 +71,28 @@ https://ckeditor.com/ckeditor-5/
 핸드북
 https://pronist.tistory.com/36
 
+
+C:\Windows\System32\drivers\etc\hosts
+```
+127.0.0.1 newphp.com
+127.0.0.1 board.newphp.com
+```
+
+DNS 설정
+
+D:\wamp64\bin\apache\apache2.4.46\conf\extra\httpd-vhosts.conf
+```
+<VirtualHost *:80>
+DocumentRoot /myeongsim/newphp/
+ServerName newphp.com
+</VirtualHost>
+
+<VirtualHost *:80>
+DocumentRoot /myeongsim/newphp/LaravelBoard/public/
+ServerName board.newphp.com
+</VirtualHost>
+```
+
+파일 구조
+D:\myeongsim\newphp\Board
+D:\myeongsim\newphp\LaravelBoard

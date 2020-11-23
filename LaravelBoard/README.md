@@ -52,5 +52,5 @@ HTTP커널은 요청 처리 전에 middlewares를 거치는데, auth, csrf등을
 요약하자면,
 애플리케이션의 인스턴스가 생성되고, 서비스 프로바이더가 등록된후 부트스트래핑 과정을 마친 프로그램이 요청을 처리합니다. 매우 간단합니다!
 
-요청(public/index.php) -> 부트스트래핑(bootstrap/app.php) -> 프로바이더(app/providers) -> 라우트(routes/web.php) -> 미들웨어(app/middlewares) -> 응답
+요청(public/index.php) -> 부트스트래핑(bootstrap/app.php) -> 프로바이더(app/providers) -> 미들웨어(app/middlewares)-> 라우트(routes/web.php) -> 응답
 

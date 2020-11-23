@@ -51,13 +51,19 @@ function first($query, $params)
 }
 
 /**
- * Select 여러줄
+ * get Rows
+ *
+ * @param object $conn
+ * @param string $query
+ * @param array $params
+ *
+ * @return array
  */
 function rows($query, ...$params)
 {
     return raw($query, $params, function ($result) {
         $rows = [];
-        while ($row = mysqli_fetch_assoc($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
             array_push($rows, $row);
         }
         return $rows;
