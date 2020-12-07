@@ -12,7 +12,25 @@ php -S localhost:8000 -t Functions
 
 네이밍 컨벤션
 https://edykim.com/ko/post/comparing-paleolithic-php-with-modern-php/
-https://www.php-fig.org/psr/psr-1/
+https://www.php-fig.org/psr/psr-1/ (중요)
+```
+class Foo // 클래스 아래 중괄호
+{
+    public function sampleFunction(int $a)
+    {
+        if ($a) {   // if 옆에 띄어쓰기
+
+        }
+    }
+}
+```
+
+https://www.php-fig.org/psr/psr-3/ 로거 인터페이스
+https://www.php-fig.org/psr/psr-4/ auto-loader: 정규화 된 Class 이름, 네임스페이스 접두사 및 기본 디렉토리에 해당하는 파일 경로를 설정해야 한다. (컴포저)
+https://www.php-fig.org/psr/psr-6/ 캐시, 관련된 psr: https://www.php-fig.org/psr/psr-16/
+https://www.php-fig.org/psr/psr-7/ http-message, 관련된 psr: https://www.php-fig.org/psr/psr-17/, https://www.php-fig.org/psr/psr-18/ 
+
+https://www.php-fig.org/psr/psr-12/ 확장된 버전 (중요)
 
 Files MUST use only <?php and <?= tags.
 
