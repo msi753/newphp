@@ -6,6 +6,7 @@
  * php7에 추가된 내용은 파일명 마지막에 7을 붙여주자	파일명7.php
  */
 //phpinfo();
+//var_dump(extension_loaded('openssl'));
 ?>
 <!DOCTYPE html>
 <html lang="ko">
