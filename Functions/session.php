@@ -12,6 +12,14 @@
 /**
  * Session Handler Interface
  * DB에 세션 저장
+ * 왜 사용하냐면 세션은 서버에 저장되는 것이기 때문이다.
+ * 만약 L4로 3개의 서버에 로드밸런싱하고 있으면
+ * 한 사용자의 세션 정보가 하나의 서버에만 저장이 되기 때문에
+ * 로드밸런싱으로 다른 서버로 옮겨지면 갑자기 연결이 끊어지는 문제가 발생할 수 있다
+ * 따라서 세션을 시작하면 DatabaseSessionHandler클래스를 통해서 open메서드, read메서드를 실행시키고
+ * DB에 값을 저장한 후에
+ * 세션값을 사용할 때 DB에 접근해서 사용하게 되면
+ * 서버 한개에만 세션값을 저장했을 때의 문제점을 없앨 수 있게된다.
  */
 class DatabaseSessionHandler implements SessionHandlerInterface
 {
